@@ -1,0 +1,6 @@
+@ReimbursementPortal_HostAddress = http://localhost:5286
+
+GET {{ReimbursementPortal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
