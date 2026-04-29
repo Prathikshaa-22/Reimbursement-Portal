@@ -1,0 +1,97 @@
+<div class="container mt-4">
+ 
+  <h3>Create Claim</h3>
+ 
+  <div class="card p-4 shadow">
+ 
+    <!-- TITLE -->
+    <label>Claim Title</label>
+    <input [(ngModel)]="claimObj.claimTitle" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(claimObj.claimTitle)">
+      Title is required
+    </small>
+ 
+    <!-- CATEGORY -->
+    <label class="mt-2">Category</label>
+    <input [(ngModel)]="claimObj.category" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(claimObj.category)">
+      Category is required
+    </small>
+ 
+    <!-- FROM DATE -->
+    <label class="mt-2">From Date</label>
+    <input type="date" [(ngModel)]="claimObj.fromDate" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(claimObj.fromDate)">
+      From Date is required
+    </small>
+ 
+    <!-- TO DATE -->
+    <label class="mt-2">To Date</label>
+    <input type="date" [(ngModel)]="claimObj.toDate" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(claimObj.toDate)">
+      To Date is required
+    </small>
+ 
+    <!-- AMOUNT -->
+    <label class="mt-2">Total Amount</label>
+    <input type="number" [(ngModel)]="claimObj.totalAmount" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(claimObj.totalAmount)">
+      Amount is required
+    </small>
+ 
+    <!-- PAYMENT -->
+    <label class="mt-2">Payment Method</label>
+    <select [(ngModel)]="claimObj.paymentMethod" class="form-control">
+      <option value="">Select</option>
+      <option value="Cash">Cash</option>
+      <option value="Card">Card</option>
+      <option value="UPI">UPI</option>
+    </select>
+    <small class="text-danger" *ngIf="isInvalid(claimObj.paymentMethod)">
+      Payment method is required
+    </small>
+ 
+    <!-- DESCRIPTION -->
+    <label class="mt-2">Description</label>
+    <textarea [(ngModel)]="claimObj.description" class="form-control"></textarea>
+    <small class="text-danger" *ngIf="isInvalid(claimObj.description)">
+      Description is required
+    </small>
+ 
+    <hr>
+ 
+    <!-- INVOICES -->
+    <h5>Invoices</h5>
+ 
+    <div *ngFor="let inv of claimObj.invoices; let i = index" class="border p-3 mb-2">
+ 
+      <input placeholder="Invoice Number" [(ngModel)]="inv.invoiceNumber" class="form-control mb-1">
+      <small class="text-danger" *ngIf="submitted && !inv.invoiceNumber">Required</small>
+ 
+      <input placeholder="Vendor Name" [(ngModel)]="inv.vendorName" class="form-control mb-1">
+      <small class="text-danger" *ngIf="submitted && !inv.vendorName">Required</small>
+ 
+      <input type="date" [(ngModel)]="inv.invoiceDate" class="form-control mb-1">
+      <small class="text-danger" *ngIf="submitted && !inv.invoiceDate">Required</small>
+ 
+      <input type="number" placeholder="Amount" [(ngModel)]="inv.invoiceAmount" class="form-control mb-1">
+      <small class="text-danger" *ngIf="submitted && !inv.invoiceAmount">Required</small>
+ 
+      <input type="file" (change)="onFileChange($event, i)" class="form-control">
+      <small class="text-danger" *ngIf="submitted && !inv.file">File required</small>
+ 
+    </div>
+ 
+    <button class="btn btn-secondary mt-2" (click)="addInvoice()">Add Invoice</button>
+ 
+    <hr>
+ 
+    <!-- SUBMIT -->
+    <button class="btn btn-primary" (click)="submitClaim()">
+      Submit Claim
+    </button>
+ 
+  </div>
+ 
+</div>
+ 

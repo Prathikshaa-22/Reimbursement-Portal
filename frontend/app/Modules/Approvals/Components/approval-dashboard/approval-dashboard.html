@@ -1,0 +1,46 @@
+<div class="container mt-4">
+ 
+  <h4 class="mb-4">Approvals</h4>
+ 
+  <div class="row">
+ 
+    <!-- CLAIMS -->
+    <div class="col-md-4">
+      <div class="card p-4 shadow text-center dashboard-card"
+           (click)="goToClaims()">
+ 
+        <h6 class="text-muted">Claim Approvals</h6>
+        <h2 class="text-primary">{{claimCount}}</h2>
+        <small>Pending Requests</small>
+ 
+      </div>
+    </div>
+ 
+    <!-- PRE APPROVAL -->
+    <div class="col-md-4">
+      <div class="card p-4 shadow text-center dashboard-card"
+           (click)="goToPreApprovals()">
+ 
+        <h6 class="text-muted">Pre Approvals</h6>
+        <h2 class="text-warning">{{preCount}}</h2>
+        <small>Pending Requests</small>
+ 
+      </div>
+    </div>
+ 
+    <!-- HISTORY -->
+    <div class="col-md-4">
+      <div class="card p-4 shadow text-center dashboard-card"
+           (click)="goToHistory()">
+ 
+        <h6 class="text-muted">History</h6>
+        <h2 class="text-success">{{historyCount}}</h2>
+        <small>Processed Requests</small>
+ 
+      </div>
+    </div>
+ 
+  </div>
+ 
+</div>
+  

@@ -1,0 +1,60 @@
+<div class="container mt-4">
+ 
+  <h3>My Claims & Pre-Approvals</h3>
+ 
+  <!-- LOADING -->
+  <p *ngIf="loading">Loading...</p>
+ 
+  <!-- EMPTY -->
+  <div *ngIf="!loading && list.length === 0" class="alert alert-info">
+    No records found
+  </div>
+ 
+  <!-- TABLE -->
+  <table class="table table-bordered" *ngIf="list.length > 0">
+ 
+    <thead class="table-dark">
+      <tr>
+        <th>Type</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+ 
+    <tbody>
+      <tr *ngFor="let item of list">
+ 
+        <td>
+          <span *ngIf="item.type === 'Claim'" class="badge bg-primary">
+            Claim
+          </span>
+ 
+          <span *ngIf="item.type === 'Pre-Approval'" class="badge bg-secondary">
+            Pre-Approval
+          </span>
+        </td>
+ 
+        <td>{{ item.title }}</td>
+ 
+        <td>{{ item.date | date:'dd-MM-yyyy' }}</td>
+ 
+        <td>
+          <span
+            [ngClass]="{
+              'text-success': item.status === 'Approved',
+              'text-danger': item.status === 'Rejected',
+              'text-warning': item.status === 'Submitted'
+            }"
+          >
+            {{ getStatus(item) }}
+          </span>
+        </td>
+ 
+      </tr>
+    </tbody>
+ 
+  </table>
+ 
+</div>
+ 

@@ -1,0 +1,36 @@
+<div class="login-wrapper">
+ 
+  <div class="login-card text-center">
+ 
+    <!-- Profile Circle -->
+    <div class="profile-circle">
+      <i class="bi bi-person-fill"></i>
+    </div>
+ 
+    <h3 class="mb-4">Portal Login</h3>
+ 
+    <!-- Email -->
+    <input
+      type="email"
+      class="form-control custom-input mb-3"
+      placeholder="Email"
+      [(ngModel)]="loginObj.email"
+    />
+ 
+    <!-- Password -->
+    <input
+      type="password"
+      class="form-control custom-input mb-4"
+      placeholder="Password"
+      [(ngModel)]="loginObj.password"
+    />
+ 
+    <!-- Button -->
+    <button class="btn btn-login w-100" (click)="login()">
+      Login
+    </button>
+ 
+  </div>
+ 
+</div>
+ 

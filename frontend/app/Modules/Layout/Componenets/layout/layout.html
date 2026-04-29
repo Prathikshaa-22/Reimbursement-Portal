@@ -1,0 +1,70 @@
+<div class="layout">
+ 
+  <!-- SIDEBAR -->
+  <div class="sidebar" [ngClass]="{'collapsed': isSidebarClosed}">
+ 
+    <!-- PROFILE -->
+    <div class="profile-section text-center">
+ 
+      <div class="profile-icon">
+        <i class="bi bi-person-circle"></i>
+      </div>
+ 
+      <h6>{{user?.name}}</h6>
+      <small>{{user?.email}}</small>
+ 
+      <small class="manager" *ngIf="user?.managerName">
+        Reporting to: {{user?.managerName}}
+      </small>
+ 
+      <span class="role-badge">{{user?.role}}</span>
+ 
+    </div>
+ 
+    <hr>
+ 
+    <!-- MENU -->
+    <ul class="menu">
+ 
+      <li routerLink="/app/claims" routerLinkActive="active">
+        <i class="bi bi-list"></i> Claims
+      </li>
+ 
+      <li routerLink="/app/new-claim" routerLinkActive="active">
+        <i class="bi bi-plus-circle"></i> New Claim
+      </li>
+ 
+      <li routerLink="/app/pre-approval" routerLinkActive="active">
+        <i class="bi bi-check2-square"></i> Pre Approval
+      </li>
+ 
+  
+      <li *ngIf="isManager()" routerLink="/app/approval" routerLinkActive="active">
+        <i class="bi bi-shield-check"></i> Approvals
+      </li>
+ 
+      <li (click)="logout()" class="logout">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </li>
+ 
+    </ul>
+ 
+  </div>
+ 
+
+  <div class="main">
+ 
+   
+    <div class="header">
+      <button class="menu-btn" (click)="toggleSidebar()">☰</button>
+      <h5>Reimbursement Portal</h5>
+    </div>
+ 
+  
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+ 
+  </div>
+ 
+</div>

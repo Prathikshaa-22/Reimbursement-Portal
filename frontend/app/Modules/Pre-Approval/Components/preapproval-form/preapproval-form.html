@@ -1,0 +1,52 @@
+<div class="container mt-4">
+ 
+  <h3>Create Pre-Approval</h3>
+ 
+  <div class="card p-4 shadow">
+ 
+    <!-- TITLE -->
+    <label>Title</label>
+    <input [(ngModel)]="preObj.title" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(preObj.title)">
+      Title is required
+    </small>
+ 
+    <!-- CATEGORY -->
+    <label class="mt-2">Category</label>
+    <input [(ngModel)]="preObj.category" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(preObj.category)">
+      Category is required
+    </small>
+ 
+    <!-- AMOUNT -->
+    <label class="mt-2">Estimated Amount</label>
+    <input type="number" [(ngModel)]="preObj.estimatedAmount" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(preObj.estimatedAmount)">
+      Amount is required
+    </small>
+ 
+    <!-- DATE -->
+    <label class="mt-2">Planned Date</label>
+    <input type="date" [(ngModel)]="preObj.plannedDate" class="form-control">
+    <small class="text-danger" *ngIf="isInvalid(preObj.plannedDate)">
+      Planned date is required
+    </small>
+ 
+    <!-- JUSTIFICATION -->
+    <label class="mt-2">Justification</label>
+    <textarea [(ngModel)]="preObj.justification" class="form-control"></textarea>
+    <small class="text-danger" *ngIf="isInvalid(preObj.justification)">
+      Justification is required
+    </small>
+ 
+    <hr>
+ 
+    <!-- SUBMIT -->
+    <button class="btn btn-primary" (click)="submit()">
+      Submit Pre-Approval
+    </button>
+ 
+  </div>
+ 
+</div>
+ 

@@ -1,0 +1,34 @@
+<div class="container mt-4">
+ 
+  <h4 class="mb-3">Pending Claims</h4>
+ 
+  <!-- No data -->
+  <div *ngIf="claims.length === 0" class="text-center text-muted">
+    No pending claims
+  </div>
+ 
+  <!-- List -->
+  <div *ngFor="let claim of claims"
+       class="card p-3 mb-3 shadow claim-card"
+       (click)="openDetails(claim.claimId)">
+ 
+    <div class="d-flex justify-content-between align-items-center">
+ 
+      <!-- LEFT -->
+      <div>
+        <h6 class="mb-1">{{claim.claimTitle}}</h6>
+ 
+        <small class="text-muted">
+          Submitted by: {{claim.employeeName || claim.userName}}
+        </small>
+      </div>
+ 
+      <!-- RIGHT -->
+      <span class="badge bg-warning">Pending</span>
+ 
+    </div>
+ 
+  </div>
+ 
+</div>
+ 

@@ -1,0 +1,10 @@
+.pre-card {
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+ 
+.pre-card:hover {
+  transform: scale(1.02);
+}
+ 

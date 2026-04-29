@@ -1,0 +1,73 @@
+<div class="container mt-4">
+ 
+  <!-- TITLE -->
+  <h3 class="mb-3">Claim Details</h3>
+ 
+  <!-- LOADING -->
+  <div *ngIf="!claim|| !claim.claimId" class="text-center">
+    <p>Loading...</p>
+  </div>
+ 
+  <!-- MAIN CARD -->
+  <div class="card p-4 shadow" *ngIf="claim">
+ 
+    <h4 class="mb-3">{{ claim.claimTitle }}</h4>
+ 
+    <p><b>Employee:</b>
+      {{ claim.employeeName || ('User-' + claim.userId) }}
+    </p>
+ 
+    <p><b>Category:</b> {{ claim.category }}</p>
+ 
+    <p><b>Amount:</b> ₹ {{ claim.totalAmount }}</p>
+ 
+    <p><b>Date:</b>
+      {{ claim.expenseDate | date:'mediumDate' }}
+    </p>
+ 
+    <p>
+      <b>Status:</b>
+      <span
+        [ngClass]="{
+          'text-warning': claim.status === 'Submitted',
+          'text-success': claim.status === 'Approved',
+          'text-danger': claim.status === 'Rejected'
+        }">
+        {{ claim.status }}
+      </span>
+    </p>
+ 
+  </div>
+ 
+  <!-- ACTION BUTTONS -->
+  <div *ngIf="claim?.status?.toLowerCase() === 'submitted'" class="mt-3">
+ 
+    <button class="btn btn-success me-2"
+            (click)="takeAction('Approved')">
+      Approve
+    </button>
+ 
+    <button class="btn btn-danger"
+            (click)="takeAction('Rejected')">
+      Reject
+    </button>
+ 
+  </div>
+ 
+  <!-- REJECT COMMENT BOX -->
+  <div *ngIf="showRejectBox" class="mt-3">
+ 
+    <textarea [(ngModel)]="comment"
+              class="form-control"
+              placeholder="Enter rejection reason">
+    </textarea>
+ 
+    <button class="btn btn-danger mt-2"
+            (click)="submitReject()">
+      Submit Reject
+    </button>
+ 
+  </div>
+ 
+</div>
+ 
